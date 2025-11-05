@@ -1,0 +1,5 @@
+gseapy
+pandas
+numpy
+matplotlib.pyplot
+os
