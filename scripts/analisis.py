@@ -9,6 +9,22 @@ import pandas as pd  # Para manipulación y exportación de resultados en DataFr
 import numpy as np   # Para cálculos numéricos en métricas de significancia (e.g., log p-valores).
 import matplotlib.pyplot as plt  # Para generar visualizaciones de términos enriquecidos.
 import os  # Para crear directorios y manejar paths de salida.
+import argparse  # Para leer argumentos de línea de comandos.
+
+def leer_genes_desde_archivo(ruta_archivo: str) -> list[str]:
+    """
+    Lee genes de un archivo TXT (uno por línea o separados por comas) y devuelve lista en formato HUGO.
+    """
+    if not os.path.exists(ruta_archivo):
+        raise FileNotFoundError(f"Archivo de entrada no encontrado: {ruta_archivo}")
+    
+    with open(ruta_archivo, "r") as f:
+        contenido = f.read().strip().replace(",", "\n")  # Soporta comas o líneas.
+    
+    genes = [g.strip().upper() for g in contenido.splitlines() if g.strip()]
+    print(f"Genes listados: {len(genes)} desde {ruta_archivo}")
+    return genes
+
 
 def analisis_go_ora(genes: list[str], salida: str = "resultados_gseapy", umbral_fdr: float = 0.05):
     """
@@ -99,5 +115,27 @@ def analisis_go_ora(genes: list[str], salida: str = "resultados_gseapy", umbral_
 
 # --------- EJECUCIÓN ---------
 
-genes = ["COX4I2", "ND1", "ATP6"]
-resultados = analisis_go_ora(genes)
+if __name__ == "__main__":
+    # Configurar parser de argumentos CLI.
+    parser = argparse.ArgumentParser(
+        description="Análisis funcional GO-ORA para genes humanos usando Enrichr."
+    )
+    parser.add_argument(
+        "--input", "-i", required=True, 
+        help="Archivo TXT con genes (uno por línea o separados por comas, formato HUGO)."
+    )
+    parser.add_argument(
+        "--output", "-o", default="resultados_gseapy", 
+        help="Directorio de salida para CSV y PNG (default: 'resultados_gseapy')."
+    )
+    parser.add_argument(
+        "--fdr", type=float, default=0.05, 
+        help="Umbral FDR para filtrar resultados (default: 0.05)."
+    )
+    args = parser.parse_args()
+    
+    # Leer genes y ejecutar.
+    genes = leer_genes_desde_archivo(args.input)
+    resultados = analisis_go_ora(genes, salida=args.output, umbral_fdr=args.fdr)
+    print(f"Análisis completado. Resultados en: {args.output}")
+
