@@ -8,8 +8,6 @@
 
 Este proyecto se centra en el análisis funcional de tres genes: **COX4I2**, **ND1** y **ATP6**; cuyo correcto funcionamiento es indispensable para la **producción de energía celular (ATP)** a través de la **fosforilación oxidativa** en las **mitocondrias**.
 
-Aunque los tres colaboran en la misma ruta metabólica, desempeñan roles distintos y tienen orígenes genómicos diferentes. A continuación, se repasan las características principales de cada uno de ellos.
-
 ---
 
 ## Objetivo
