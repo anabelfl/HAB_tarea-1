@@ -56,9 +56,9 @@ La salida esperada del script devuelve una representación gráfica y un archivo
 - **Tamaño de puntos**: Proporcional al conteo de genes solapados.
 - **Colores (gradiente azul)**: Más oscuro para mayor significancia (bajos FDR), enfatizando términos como "cellular respiration" y "aerobic electron transport chain", confirmando roles bioenergéticos en la mitocondria.
 
-<img src="results/grafico_dotplot.png" alt="En la gráfica de dot plot se muestran los 15 procesos biológicos, funciones moleculares y componentes celulares más enriquecidos entre los genes de interés (COX4I2, ND1 y ATP6)" width="300">
+<img src="results/grafico_dotplot.png" width="500">
 
-Los términos con mayor relevancia: **transporte de electrones mitocondriales** (cytochrome c to oxygen), **respiración celular** y **cadena de transporte aeróbico**; tienen una fuerte implicación en la cadena respiratoria y síntesis de ATP mitocondrial. Esta conclusión subraya la conexión funcional entre los genes y el metabolismo energético oxidativo, resaltando su papel esencial en la generación de energía dentro de la célula.
+En la gráfica de dot plot se muestran los 15 procesos biológicos, funciones moleculares y componentes celulares más enriquecidos entre los genes de interés (COX4I2, ND1 y ATP6). Los términos con mayor relevancia: **transporte de electrones mitocondriales** (cytochrome c to oxygen), **respiración celular** y **cadena de transporte aeróbico**; tienen una fuerte implicación en la cadena respiratoria y síntesis de ATP mitocondrial. Esta conclusión subraya la conexión funcional entre los genes y el metabolismo energético oxidativo, resaltando su papel esencial en la generación de energía dentro de la célula.
 
 ---
 
